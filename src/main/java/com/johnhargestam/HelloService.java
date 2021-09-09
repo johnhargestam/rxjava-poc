@@ -18,10 +18,10 @@ public class HelloService {
   }
 
   public Observable<String> syncHello(String name) {
-    return Observable.fromCallable(() -> "Hello " + name);
+    return Observable.just("Hello " + name);
   }
 
-  public Observable<String> asyncHello(String name, long seconds, TimeUnit timeUnit) {
-    return this.syncHello(name).delay(seconds, timeUnit, scheduler);
+  public Observable<String> asyncHello(String name, long time, TimeUnit timeUnit) {
+    return this.syncHello(name).delay(time, timeUnit, scheduler);
   }
 }
